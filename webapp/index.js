@@ -5,7 +5,7 @@ sap.ui.define([
 	"use strict";
 
 	new ComponentContainer({
-		name: "todo",
+		name: "sap.ui.demo.walkthrough",
 		settings: {
 			id : "walkthrough"
 		},
