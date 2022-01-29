@@ -37,14 +37,18 @@ sap.ui.define([
             if(!sNewTodo.trim()) {
                 return;
             }
+
+            new Date().getTime();
+            var sTime = Math.floor(Date.now() / 1000);
             aTodos.push({
 				id: jQuery.sap.uid(),
                 done: false,
-				text: sNewTodo
+				text: sNewTodo,
+                time: sTime
 			});
 
             oViewModel.setProperty("/addTask", "");
-            this.store.set(aTodo);
+            this.store.set(aTodos);
 
         },
 
