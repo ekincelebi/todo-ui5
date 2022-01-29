@@ -41,11 +41,21 @@
                 <CheckBox 
                     select=""
                     selected=""/>
-                <Input value="{text}" submit="onRenameDone">
+                <Input value="{text}" 
+                        submit="onRenameDone">
                     <layoutData>
                         <FlexItemData growFactor="1"/>
                     </layoutData>
                 </Input>
+                <FormattedText 
+                    htmlText="{ path: 'time',
+                                type: 'sap.ui.model.type.DateTime',
+                                formatOptions: {
+                                    source: {pattern: 'yyyy-MM-ddTHH:mm:ss.SSSX'},
+                                    style: 'medium'
+                                }
+                            }" 
+                    class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
             </HBox>
          </CustomListItem>
      </List>
