@@ -15,15 +15,30 @@
                     value="{/addTask}"
                     submit="onAddTask"
                     placeholder="{i18n>ToolbarInputPlaceholder}"/>
+                <Button
+                    text="Add"
+                    enabled="{= ${/addTask}.length > 0}"
+                    type="Transparent"
+                    press="onAddTask"
+                  />
                 <!--<Title text="{i18n>todoListTitle}"/>
                 <ToolbarSpacer/>
                 <SearchField width="50%" search=".onFilterInvoices"/>-->
             </Toolbar>
          </headerToolbar>
-         <items>
-            <ObjectListItem
-                title="{text}">     
             </ObjectListItem>
-         </items>
+         <CustomListItem>
+            <HBox
+                justifyContent="Start">
+                <CheckBox 
+                    select=""
+                    selected=""/>
+                <Input value="{text}">
+                    <layoutData>
+                        <FlexItemData growFactor="1"/>
+                    </layoutData>
+                </Input>
+            </HBox>
+         </CustomListItem>
      </List>
  </mvc:View>
