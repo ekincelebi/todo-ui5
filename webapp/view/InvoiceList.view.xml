@@ -4,11 +4,20 @@
  xmlns:mvc="sap.ui.core.mvc">
      <List
          id="invoiceList"
+         mode="Delete"
          headerText="{i18n>invoiceListTitle}"
          noDataText="{i18n>noTask}"
          class="saUiResponsiveMargin"
          width="auto"
-         items="{/todos}" >
+         items="{
+            path : '/todos',
+            sorter : {
+                path : 'time',
+                descending: 'true'
+            }
+         }" >
+
+         
          <headerToolbar>
             <Toolbar>
                 <Input
@@ -26,14 +35,13 @@
                 <SearchField width="50%" search=".onFilterInvoices"/>-->
             </Toolbar>
          </headerToolbar>
-            </ObjectListItem>
          <CustomListItem>
             <HBox
                 justifyContent="Start">
                 <CheckBox 
                     select=""
                     selected=""/>
-                <Input value="{text}">
+                <Input value="{text}" submit="onRenameDone">
                     <layoutData>
                         <FlexItemData growFactor="1"/>
                     </layoutData>
