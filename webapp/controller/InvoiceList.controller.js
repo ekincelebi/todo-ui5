@@ -12,7 +12,11 @@ sap.ui.define([
         onInit: function() {
 
             
-            var oViewModel = new JSONModel()
+            /*var oViewModel = new JSONModel( {
+                minDate: new Date()
+            });*/
+
+            var oViewModel = new JSONModel();
             this.store = new LocalStorageUtil("todos");
 
             var data = null;
@@ -34,6 +38,8 @@ sap.ui.define([
             var oViewModel = this.getView().getModel()
             var aTodos = oViewModel.getData().todos;
             var sNewTodo = oViewModel.getProperty("/addTask");
+            var priorityText = this.byId("priority").getSelectedItem().getText();
+            var dueDate = this.byId("datePicker").getValue();
             if(!sNewTodo.trim()) {
                 return;
             }
@@ -46,7 +52,9 @@ sap.ui.define([
 				id: jQuery.sap.uid(),
                 done: false,
 				text: sNewTodo,
-                time: sTime
+                time: sTime,
+                priority: priorityText,
+                due: dueDate
 			});
 
             oViewModel.setProperty("/addTask", "");

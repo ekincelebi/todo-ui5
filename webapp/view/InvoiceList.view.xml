@@ -1,6 +1,7 @@
 <mvc:View
  controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
  xmlns="sap.m"
+ xmlns:core="sap.ui.core"
  xmlns:mvc="sap.ui.core.mvc">
      <List
          id="invoiceList"
@@ -12,8 +13,12 @@
          items="{
             path : '/todos',
             sorter : {
-                path : 'time',
-                descending: 'true'
+                path : 'priority',
+                group: true,
+                sorter : {
+                    time : 'priority',
+                    descending : true
+                }
             }
          }" >
 
@@ -24,6 +29,23 @@
                     value="{/addTask}"
                     submit="onAddTask"
                     placeholder="{i18n>ToolbarInputPlaceholder}"/>
+                <ComboBox 
+                    id="priority" 
+                    placeholder="Priority"
+                    selectionChange="onAddTask" >
+                    <items>
+                        <core:Item key="priority-high-key" 
+                            text="High"  id="priority-high"/>
+                        <core:Item key="priority-medium-key" 
+                            text="Medium"  id="priority-medium"/>
+                        <core:Item key="priority-low-key" 
+                            text="Low"  id="priority-low"/>
+                    </items>
+                </ComboBox>
+                <DatePicker 
+                    id="datePicker" 
+                    change="onAddTask"/>
+                
                 <Button
                     text="Add"
                     enabled="{= ${/addTask}.length > 0}"
@@ -48,13 +70,7 @@
                     </layoutData>
                 </Input>
                 <FormattedText 
-                    htmlText="{ path: 'time',
-                                type: 'sap.ui.model.type.DateTime',
-                                formatOptions: {
-                                    source: {pattern: 'yyyy-MM-ddTHH:mm:ss.SSSX'},
-                                    style: 'medium'
-                                }
-                            }" 
+                    htmlText="{due}" 
                     class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
             </HBox>
          </CustomListItem>
