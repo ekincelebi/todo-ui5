@@ -57,10 +57,27 @@ sap.ui.define([
                 due: dueDate
 			});
 
-            oViewModel.setProperty("/addTask", "");
+            oViewModel.setProperty("/addTask");
             this.store.set(aTodos);
 
         },
+
+        onTaskDone: function(oEvent) {
+            var oViewModel = this.getView().getModel();
+            var aTodos = oViewModel.getData().todos;
+            var sPath = oEvent.getSource().getBindingContext().getPath();
+            var iSelectedIndex = sPath.slice(-1);
+
+            if(oEvent.getParameter("selected") === true) {
+                aTodos[iSelectedIndex].done = true;
+            } else {
+                aTodos[iSelectedIndex].done = false;
+            }
+
+            oViewModel.refresh(true);
+            this.store.set(aTodos);
+        },
+
 
         onFilterInvoices: function(oEvent) {
             // build filter array

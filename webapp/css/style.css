@@ -9,4 +9,12 @@ html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
 .myAppDemoWT .myCustomText {
   display: inline-block;
   font-weight: bold;
+  margin-right: 0.25rem;
+  
+}
+
+.myAppDemoWT .myCustomTaskText {
+  display: inline-block;
+  margin-right: 0.25rem;
+  
 }

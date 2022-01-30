@@ -5,7 +5,6 @@
  xmlns:mvc="sap.ui.core.mvc">
      <List
          id="invoiceList"
-         mode="Delete"
          headerText="{i18n>invoiceListTitle}"
          noDataText="{i18n>noTask}"
          class="saUiResponsiveMargin"
@@ -21,7 +20,6 @@
                 }
             }
          }" >
-
          
          <headerToolbar>
             <Toolbar>
@@ -31,8 +29,8 @@
                     placeholder="{i18n>ToolbarInputPlaceholder}"/>
                 <ComboBox 
                     id="priority" 
-                    placeholder="Priority"
-                    selectionChange="onAddTask" >
+                    placeholder="{i18n>PriorityPlaceholder}"
+                    selectionSubmit="onAddTask" >
                     <items>
                         <core:Item key="priority-high-key" 
                             text="High"  id="priority-high"/>
@@ -44,10 +42,11 @@
                 </ComboBox>
                 <DatePicker 
                     id="datePicker" 
-                    change="onAddTask"/>
+                    submit="onAddTask"
+                />
                 
                 <Button
-                    text="Add"
+                    text="{i18n>AddTask}"
                     enabled="{= ${/addTask}.length > 0}"
                     type="Transparent"
                     press="onAddTask"
@@ -61,14 +60,15 @@
             <HBox
                 justifyContent="Start">
                 <CheckBox 
-                    select=""
-                    selected=""/>
-                <Input value="{text}" 
-                        submit="onRenameDone">
+                    select="onTaskDone"
+                    selected="{done}"/>
+                <FormattedText 
+                    htmlText="{text}" 
+                    class="sapUiSmallMargin myCustomTaskText">
                     <layoutData>
                         <FlexItemData growFactor="1"/>
                     </layoutData>
-                </Input>
+                </FormattedText>
                 <FormattedText 
                     htmlText="{due}" 
                     class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
