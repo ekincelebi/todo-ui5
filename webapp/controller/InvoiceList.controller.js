@@ -38,7 +38,7 @@ sap.ui.define([
             var oViewModel = this.getView().getModel()
             var aTodos = oViewModel.getData().todos;
             var sNewTodo = oViewModel.getProperty("/addTask");
-            var priorityText = this.byId("priority").getSelectedItem().getText();
+            var priorityText = this.byId("priorityCombobox").getSelectedItem().getText();
             var dueDate = this.byId("datePicker").getValue();
             if(!sNewTodo.trim()) {
                 return;
@@ -77,6 +77,10 @@ sap.ui.define([
             oViewModel.refresh(true);
             this.store.set(aTodos);
         },
+
+        getPriority: function(oContext) {
+			return oContext.getProperty('priority');
+		},
 
 
         onFilterInvoices: function(oEvent) {
