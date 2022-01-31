@@ -5,7 +5,7 @@ sap.ui.define([
     "./LocalStorageUtil"
 ], function (Controller, JSONModel, formatter, LocalStorageUtil) {
     "use strict";
-    return Controller.extend("sap.ui.demo.walkthrough.controller.InvoiceList", {
+    return Controller.extend("sap.ui.demo.walkthrough.controller.TaskList", {
         formatter: formatter,
         oData : {
             "currentDate": new Date()
@@ -15,7 +15,7 @@ sap.ui.define([
             this.store = new LocalStorageUtil("todos");
 
             var data = null;
-            if(this.store.isEmpty()) {
+            if(!(this.store.get())) {
                 data = this.store.set({
                     todos: []
                 }).get();

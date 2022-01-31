@@ -13,14 +13,7 @@ sap.ui.define([], function() {
 			},
 			set: function (data) {
 				storage.setItem(this.name, JSON.stringify(data));
-				return this; // for method chaining <- 얘 역할?
-			},
-			remove: function () {
-				storage.removeItem(this.name);
-				return this; // for method chaining
-			},
-			isEmpty: function () {
-				return !(this.get());
+				return this; 
 			}
         }
 	})();
