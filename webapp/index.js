@@ -7,7 +7,7 @@ sap.ui.define([
 	new ComponentContainer({
 		name: "sap.ui.ui5todo",
 		settings: {
-			id : "walkthrough"
+			id : "todoApp"
 		},
 		async: true
 	}).placeAt("content");
