@@ -12,7 +12,7 @@
          items="{
             path : '/todos',
             sorter : {
-                path : 'due',
+                path : 'priority',
                 descending : false,
                 group: '.getPriority'
             }
@@ -69,6 +69,11 @@
                 <FormattedText 
                     htmlText="{due}" 
                     class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+                <Button
+                    text="Delete Task"
+                    type="Transparent"
+                    press="onDeleteTask"
+                  />
             </HBox>
          </CustomListItem>
      </List>

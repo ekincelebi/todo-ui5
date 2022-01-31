@@ -62,6 +62,22 @@ sap.ui.define([
 
         },
 
+        onDeleteTask: function(oEvent){
+            var oViewModel = this.getView().getModel();
+            var aTodos = oViewModel.getData().todos;
+            var deleteId = oViewModel.getProperty("", oEvent.getSource().getBindingContext());
+            
+            jQuery.each(aTodos,function(iIndex, oEntry){
+
+                if (oEntry == deleteId) {
+                aTodos.splice(iIndex, 1);
+                return false;
+                }
+            });
+        oViewModel.setData(oViewModel.getData());
+        this.store.set(aTodos);
+        },
+
         onTaskDone: function(oEvent) {
             var oViewModel = this.getView().getModel();
             var aTodos = oViewModel.getData().todos;
