@@ -2,10 +2,8 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "../model/formatter",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
     "./LocalStorageUtil"
-], function (Controller, JSONModel,formatter, Filter,FilterOperator,LocalStorageUtil) {
+], function (Controller, JSONModel, formatter, LocalStorageUtil) {
     "use strict";
     return Controller.extend("sap.ui.demo.walkthrough.controller.InvoiceList", {
         formatter: formatter,
@@ -13,12 +11,6 @@ sap.ui.define([
             "currentDate": new Date()
         },
         onInit: function() {
-
-            
-            /*var oViewModel = new JSONModel( {
-                minDate: new Date()
-            });*/
-
             var oViewModel = new JSONModel(this.oData);
             this.store = new LocalStorageUtil("todos");
 
@@ -41,23 +33,24 @@ sap.ui.define([
             var oViewModel = this.getView().getModel()
             var aTodos = oViewModel.getData().todos;
             var sNewTodo = oViewModel.getProperty("/addTask");
-            var priorityText = this.byId("priorityCombobox").getSelectedItem().getText();
-            var dueDate = this.byId("datePicker").getValue();
+            var sPriority = this.byId("priorityCombobox").getSelectedItem().getText();
+            var dDueDate = this.byId("datePicker").getValue();
+
             if(!sNewTodo.trim()) {
                 return;
             }
 
-            new Date().getTime();
+            //new Date().getTime();
             //var sTime = Math.floor(Date.now() / 1000);
             //var sTime = Date.now()
-            var sTime = new Date(Date.now()).toISOString();
+            //var sTime = new Date(Date.now()).toISOString();
+
             aTodos.push({
 				id: jQuery.sap.uid(),
-                done: false,
+                isDone: false,
 				text: sNewTodo,
-                time: sTime,
-                priority: priorityText,
-                due: dueDate
+                priority: sPriority,
+                due: dDueDate
 			});
 
             oViewModel.setProperty("/addTask");
@@ -88,9 +81,9 @@ sap.ui.define([
             var iSelectedIndex = sPath.slice(-1);
 
             if(oEvent.getParameter("selected") === true) {
-                aTodos[iSelectedIndex].done = true;
+                aTodos[iSelectedIndex].isDone = true;
             } else {
-                aTodos[iSelectedIndex].done = false;
+                aTodos[iSelectedIndex].isDone = false;
             }
 
             oViewModel.refresh(true);
@@ -100,22 +93,6 @@ sap.ui.define([
         getPriority: function(oContext) {
 			return oContext.getProperty('priority');
 		},
-
-
-        onFilterInvoices: function(oEvent) {
-            // build filter array
-			var aFilter = [];
-			var sQuery = oEvent.getParameter("query");
-
-            if (sQuery) {
-				aFilter.push(new Filter("ProductName", FilterOperator.Contains, sQuery));
-			}
-
-            // filter binding
-			var oList = this.byId("invoiceList");
-			var oBinding = oList.getBinding("items");
-			oBinding.filter(aFilter);
-        }
 
     });
 });

@@ -50,10 +50,7 @@
                     enabled="{= ${/addTask}.length > 0}"
                     type="Transparent"
                     press="onAddTask"
-                  />
-                <!--<Title text="{i18n>todoListTitle}"/>
-                <ToolbarSpacer/>
-                <SearchField width="50%" search=".onFilterInvoices"/>-->
+                />
             </Toolbar>
          </headerToolbar>
          <CustomListItem>
@@ -61,7 +58,7 @@
                 justifyContent="Start">
                 <CheckBox 
                     select="onTaskDone"
-                    selected="{done}"/>
+                    selected="{isDone}"/>
                 <FormattedText 
                     htmlText="{text}" 
                     class="sapUiSmallMargin myCustomTaskText">
