@@ -18,3 +18,8 @@ html[dir="rtl"] .myAppDemoWT .myCustomButton.sapMBtn {
   margin-right: 0.25rem;
   
 }
+
+.myAppDemoWT .marginRight {
+  margin-right: 0.50rem;
+  
+}

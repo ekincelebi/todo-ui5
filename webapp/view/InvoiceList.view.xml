@@ -5,6 +5,7 @@
  xmlns:mvc="sap.ui.core.mvc">
      <List
          id="invoiceList"
+         inset="true"
          headerText="{i18n>invoiceListTitle}"
          noDataText="{i18n>noTask}"
          class="saUiResponsiveMargin"
@@ -70,10 +71,10 @@
                     htmlText="{due}" 
                     class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
                 <Button
-                    text="Delete Task"
-                    type="Transparent"
+                    icon="sap-icon://decline"
                     press="onDeleteTask"
-                  />
+                    class="marginRight"
+                />
             </HBox>
          </CustomListItem>
      </List>
