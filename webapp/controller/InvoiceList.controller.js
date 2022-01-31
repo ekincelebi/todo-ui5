@@ -9,6 +9,9 @@ sap.ui.define([
     "use strict";
     return Controller.extend("sap.ui.demo.walkthrough.controller.InvoiceList", {
         formatter: formatter,
+        oData : {
+            "currentDate": new Date()
+        },
         onInit: function() {
 
             
@@ -16,7 +19,7 @@ sap.ui.define([
                 minDate: new Date()
             });*/
 
-            var oViewModel = new JSONModel();
+            var oViewModel = new JSONModel(this.oData);
             this.store = new LocalStorageUtil("todos");
 
             var data = null;

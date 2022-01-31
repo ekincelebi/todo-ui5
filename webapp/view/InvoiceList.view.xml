@@ -39,6 +39,9 @@
                 </ComboBox>
                 <DatePicker 
                     id="datePicker" 
+                    minDate="{
+                        path: '/currentDate'
+                    }"
                     submit="onAddTask"
                 />
                 
