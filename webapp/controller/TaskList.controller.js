@@ -1,18 +1,16 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "../model/formatter",
-    "./LocalStorageUtil"
-], function (Controller, JSONModel, formatter, LocalStorageUtil) {
+    "./Storage"
+], function (Controller, JSONModel, Storage) {
     "use strict";
-    return Controller.extend("sap.ui.demo.walkthrough.controller.TaskList", {
-        formatter: formatter,
+    return Controller.extend("sap.ui.ui5todo.controller.TaskList", {
         oData : {
             "currentDate": new Date()
         },
         onInit: function() {
             var oViewModel = new JSONModel(this.oData);
-            this.store = new LocalStorageUtil("todos");
+            this.store = new Storage("todos");
 
             var data = null;
             if(!(this.store.get())) {

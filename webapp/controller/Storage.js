@@ -1,10 +1,10 @@
 sap.ui.define([], function() {
     //"use strict";
-    var LocalStorageUtil = function(sName) {
+    var Storage = function(sName) {
         this.name = sName;
     };
 
-    LocalStorageUtil.prototype = (function() {
+    Storage.prototype = (function() {
         var storage = window.localStorage;
 
         return {
@@ -18,5 +18,5 @@ sap.ui.define([], function() {
         }
 	})();
 	
-	return LocalStorageUtil;
+	return Storage;
 });

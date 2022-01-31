@@ -1,5 +1,5 @@
 <mvc:View
- controllerName="sap.ui.demo.walkthrough.controller.TaskList"
+ controllerName="sap.ui.ui5todo.controller.TaskList"
  xmlns="sap.m"
  xmlns:core="sap.ui.core"
  xmlns:mvc="sap.ui.core.mvc">
@@ -41,6 +41,7 @@
                 <DatePicker 
                     id="datePicker" 
                     minDate="{/currentDate}"
+                    placeholder="{i18n>DatePickerPlaceholder}"
                     submit="onAddTask"
                 />
                 

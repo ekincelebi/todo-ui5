@@ -4,9 +4,8 @@ sap.ui.define([
     "sap/ui/model/resource/ResourceModel"
  ], function (UIComponent, ResourceModel) {
     "use strict";
-    return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
+    return UIComponent.extend("sap.ui.ui5todo.Component", {
         metadata : {
-            "interfaces": ["sap.ui.core.IAsyncContentCreation"],
             "manifest": "json"
         },
 
@@ -16,7 +15,7 @@ sap.ui.define([
             
             // set i18n model on view
             var i18nModel = new ResourceModel({
-                bundleName: "sap.ui.demo.walkthrough.i18n.i18n"
+                bundleName: "sap.ui.ui5todo.i18n.i18n"
             });
             this.setModel(i18nModel, "i18n");
         }
