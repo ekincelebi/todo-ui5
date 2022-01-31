@@ -4,14 +4,12 @@ sap.ui.define([], function () {
         statusText: function (sStatus) {
             var resourceBundle = this.getView().getModel("i18n").getResourceBundle();
             switch (sStatus) {
-                case "A":
-                    return resourceBundle.getText("invoiceStatusA");
-                case "B":
-                    return resourceBundle.getText("invoiceStatusB");
-                case "C":
-                    return resourceBundle.getText("invoiceStatusC");
+                case true:
+                    return resourceBundle.getText("taskStatusExpired");
+                case false:
+                    return resourceBundle.getText("taskStatusValid");
                 default:
-                    return sStatus; 
+                    return resourceBundle.getText("taskStatusValid"); 
             }
         }
     };
