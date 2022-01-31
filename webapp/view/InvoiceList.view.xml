@@ -40,9 +40,7 @@
                 </ComboBox>
                 <DatePicker 
                     id="datePicker" 
-                    minDate="{
-                        path: '/currentDate'
-                    }"
+                    minDate="{/currentDate}"
                     submit="onAddTask"
                 />
                 
@@ -68,12 +66,14 @@
                     </layoutData>
                 </FormattedText>
                 <FormattedText 
+                
                     htmlText="{due}" 
                     class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
                 <Button
                     icon="sap-icon://decline"
                     press="onDeleteTask"
                     class="marginRight"
+                    type="Transparent"
                 />
             </HBox>
          </CustomListItem>

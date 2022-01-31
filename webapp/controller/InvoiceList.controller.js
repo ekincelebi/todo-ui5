@@ -40,11 +40,6 @@ sap.ui.define([
                 return;
             }
 
-            //new Date().getTime();
-            //var sTime = Math.floor(Date.now() / 1000);
-            //var sTime = Date.now()
-            //var sTime = new Date(Date.now()).toISOString();
-
             aTodos.push({
 				id: jQuery.sap.uid(),
                 isDone: false,
